@@ -7,7 +7,10 @@ namespace Trådar
     {
         static async Task Main()
         {
+            // Create an instance of RaceManager to manage and control the race simulation
             RaceManager raceManager = new RaceManager();
+
+            // Asynchronously execute the race simulation using the RunRaceAsync method
             await raceManager.RunRaceAsync();
 
         }

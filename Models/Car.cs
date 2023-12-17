@@ -33,26 +33,20 @@ namespace Trådar
 
             while (!HasFinished)
             {
-                UpdateDistance(updateIntervalMs);
+                // Update distance in correlation to the car speed
+                double distanceCoveredThisInterval = (Speed / 3600.0) * (updateIntervalMs / 1000.0);
+                Distance += distanceCoveredThisInterval;
+
+                // Chans of adding random events onto car
                 randomEventManager.CheckForRandomEvent(this, eventCheckTimer, eventCheckIntervalMs);
 
                 await Task.Delay(updateIntervalMs);
 
-                CheckRaceCompletion();
-            }
-        }
-
-        private void UpdateDistance(int updateIntervalMs)
-        {
-            double distanceCoveredThisInterval = (Speed / 3600.0) * (updateIntervalMs / 1000.0);
-            Distance += distanceCoveredThisInterval;
-        }
-
-        private void CheckRaceCompletion()
-        {
-            if (Distance >= 10)
-            {
-                HasFinished = true;
+                // If any car gets to 10km then loop will break
+                if (Distance >= 10)
+                {
+                    HasFinished = true;
+                }
             }
         }
 
