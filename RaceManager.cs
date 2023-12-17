@@ -59,7 +59,7 @@ namespace Trådar
             Console.WriteLine("\t\tThe race has started: First to 10km wins\n" +
                               "To check the race status either wait 30 sec or type 'status' and press Enter:");
 
-            ConsoleManager.DisplayCarStatus(cars);
+            Car.DisplayCarStatus(cars);
             Console.WriteLine();
         }
 
@@ -75,14 +75,14 @@ namespace Trådar
                     string input = Console.ReadLine();
                     if (input.ToLower() == "status")
                     {
-                        ConsoleManager.DisplayCarStatus(allCars);
+                        Car.DisplayCarStatus(allCars);
                         Console.WriteLine();
                     }
                 }
                 // Check and display race status every 30 seconds
                 if (statusUpdateTimer.ElapsedMilliseconds >= 30000)
                 {
-                    ConsoleManager.DisplayCarStatus(allCars);
+                    Car.DisplayCarStatus(allCars);
                     Console.WriteLine();
                     statusUpdateTimer.Restart();
                 }
@@ -100,7 +100,7 @@ namespace Trådar
         private async Task DisplayRaceResults(Task firstRaceToFinish)
         {
             Console.Clear();
-            ConsoleManager.DisplayCarStatus(allCars);
+            Car.DisplayCarStatus(allCars);
             await Console.Out.WriteLineAsync();
 
             int winningCarIndex = allRaceTasks.IndexOf(firstRaceToFinish);
