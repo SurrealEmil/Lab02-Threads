@@ -56,7 +56,7 @@ namespace Trådar
 
         private void DisplayRaceStartMessage(List<Car> cars)
         {
-            Console.WriteLine("\t\t\t  The race has started\n" +
+            Console.WriteLine("\t\tThe race has started: First to 10km wins\n" +
                               "To check the race status either wait 30 sec or type 'status' and press Enter:");
 
             ConsoleManager.DisplayCarStatus(cars);
